@@ -1,0 +1,1 @@
+Citrix Receiver is the client component of XenDesktop and XenApp, developed by Citrix Systems. It was first released in 2009.

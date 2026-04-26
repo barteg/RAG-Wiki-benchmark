@@ -1,0 +1,1 @@
+The leftover hash lemma is a lemma in cryptography first stated by Russell Impagliazzo, Leonid Levin, and Michael Luby.

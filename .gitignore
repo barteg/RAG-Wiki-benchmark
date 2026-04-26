@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+.env
+hotpot_train_v1.1.json
+data/02_processed/
+data/03_rag_db/
+data/04_wiki/
+benchmarks/results.json

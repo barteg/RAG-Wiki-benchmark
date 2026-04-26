@@ -1,0 +1,1 @@
+Medici is a German-style board game by Reiner Knizia. Players buy cards in an auction and match in series and in sets to end up with most points from those formations.
