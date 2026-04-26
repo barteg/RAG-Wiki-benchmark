@@ -1,126 +1,82 @@
 import os
 import json
 import time
-from pathlib import Path
-from typing import List, Literal, Optional
-from pydantic import BaseModel, Field
-from openai import OpenAI
+import asyncio
+from typing import Dict, List, Optional
+from pydantic import BaseModel
+from openai import AsyncOpenAI
 from dotenv import load_dotenv
-from tenacity import retry, wait_exponential, stop_after_attempt
+from src.utils.metrics import calculate_metrics
 
-from src.utils.rag_baseline import RAGBaseline
+class Comparison(BaseModel):
+    synthesis: int
+    factuality: int
+    reasoning: int
+    f1: float
+    em: bool
+    extracted_answer: str
 
-class EvalScore(BaseModel):
-    factuality: int = Field(description="Score from 1-5 on how factually accurate the answer is.")
-    synthesis: int = Field(description="Score from 1-5 on how well the answer connects multiple facts.")
-    hallucination_present: bool = Field(description="Whether the answer contains facts not in the context.")
-    reasoning: str = Field(description="Brief explanation of the scores.")
-
-class BenchmarkResult(BaseModel):
+class EvalResult(BaseModel):
     question: str
+    gold_answer: str
     rag_answer: str
     wiki_answer: str
-    rag_metrics: dict
-    wiki_metrics: dict
-    judge_comparison: EvalScore
+    rag_metrics: Dict
+    wiki_metrics: Dict
+    judge_comparison: Comparison
+    judge_model: str
 
 class EvalJudge:
-    def __init__(self, api_key: Optional[str] = None, base_url: Optional[str] = None, model: Optional[str] = None):
+    def __init__(self):
         load_dotenv()
-        self.client = OpenAI(
-            base_url=base_url or os.getenv("NVIDIA_BASE_URL"),
-            api_key=api_key or os.getenv("NVIDIA_API_KEY")
+        self.client = AsyncOpenAI(
+            api_key=os.getenv("JUDGE_API_KEY") or os.getenv("NVIDIA_API_KEY"),
+            base_url=os.getenv("JUDGE_BASE_URL") or os.getenv("NVIDIA_BASE_URL")
         )
-        self.model = model or os.getenv("NVIDIA_MODEL")
+        self.judge_model = os.getenv("JUDGE_MODEL", "gpt-4o")
 
-    @retry(wait=wait_exponential(multiplier=1, min=4, max=120), stop=stop_after_attempt(10))
-    def query_wiki(self, question: str, wiki_dir: Path) -> dict:
-        index_path = wiki_dir / "index.json"
-        with open(index_path, "r") as f:
-            index = json.load(f)
+    async def evaluate(self, question: str, gold_answer: str, rag_engine, wiki_dir: str) -> EvalResult:
+        # Parallel Engine Queries
+        rag_task = asyncio.create_task(rag_engine.query(question))
+        from src.agents.synthesizer import SynthesizerAgent
+        synth = SynthesizerAgent()
+        wiki_task = asyncio.create_task(synth.answer_from_wiki(question, wiki_dir))
         
-        pages = list(index["pages"].keys())
+        start_time = time.time()
+        rag_res, wiki_res = await asyncio.gather(rag_task, wiki_task)
+        latency = time.time() - start_time
+
+        # FIX 5: Deterministic Metrics with Extraction Prompt
+        # We judge the Wiki answer (the one we care about for the compiler)
+        metrics = calculate_metrics(wiki_res["answer"], gold_answer)
+
+        # Impartial Reasoning Scores
+        scores = await self._compare_answers(question, rag_res["answer"], wiki_res["answer"])
         
-        prompt = (
-            f"Given this list of wiki pages: {pages}\n"
-            f"And this multi-hop question: {question}\n"
-            "Pick the 1 or 2 most relevant pages needed to answer this question. "
-            "Return ONLY the page names separated by commas."
-        )
-        res = self.client.chat.completions.create(
-            model=self.model,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.1
-        )
-        total_tokens = res.usage.total_tokens
-        selected_pages = [p.strip().replace(".md", "") for p in res.choices[0].message.content.split(",")]
-        
-        wiki_context = ""
-        for page in selected_pages:
-            page_path = wiki_dir / f"{page}.md"
-            if page_path.exists():
-                with open(page_path, "r") as f:
-                    wiki_context += f"\n--- PAGE: {page} ---\n" + f.read()
-        
-        if not wiki_context:
-            return {"answer": "Relevant wiki pages not found.", "tokens": total_tokens}
-
-        prompt = f"WIKI CONTEXT:\n{wiki_context}\n\nQUESTION: {question}\nAnswer using the wiki context."
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.1
-        )
-        total_tokens += response.usage.total_tokens
-        return {"answer": response.choices[0].message.content, "tokens": total_tokens}
-
-    @retry(wait=wait_exponential(multiplier=1, min=4, max=120), stop=stop_after_attempt(10))
-    def evaluate(self, question: str, rag: RAGBaseline, wiki_dir: Path) -> BenchmarkResult:
-        # 1. RAG Query
-        start = time.time()
-        rag_res = rag.query(question)
-        rag_latency = time.time() - start
-
-        # 2. Wiki Query
-        start = time.time()
-        wiki_res = self.query_wiki(question, wiki_dir)
-        wiki_latency = time.time() - start
-
-        # 3. Judge
-        system_instruction = (
-            "You are a Senior LLM Evaluation Judge.\n"
-            "Compare two answers (RAG vs Wiki) against a 'Golden Standard' of reasoning.\n"
-            "CRITICAL: You must return a JSON object with EXACTLY these fields:\n"
-            "- \"factuality\": integer 1-5\n"
-            "- \"synthesis\": integer 1-5\n"
-            "- \"hallucination_present\": boolean\n"
-            "- \"reasoning\": string"
-        )
-        
-        prompt = (
-            f"QUESTION: {question}\n\n"
-            f"--- RAG ANSWER ---\n{rag_res['answer']}\n\n"
-            f"--- WIKI ANSWER ---\n{wiki_res['answer']}\n\n"
-            "Evaluate both. Provide structured scores."
+        comparison = Comparison(
+            **scores,
+            f1=metrics["f1"],
+            em=metrics["em"],
+            extracted_answer=metrics["extracted_answer"]
         )
 
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=[
-                {"role": "system", "content": system_instruction},
-                {"role": "user", "content": prompt}
-            ],
-            response_format={"type": "json_object"},
-            temperature=0.1
-        )
-        
-        judge_score = EvalScore(**json.loads(response.choices[0].message.content))
-
-        return BenchmarkResult(
+        return EvalResult(
             question=question,
-            rag_answer=rag_res['answer'],
-            wiki_answer=wiki_res['answer'],
-            rag_metrics={"latency": rag_latency, "tokens": rag_res['tokens']},
-            wiki_metrics={"latency": wiki_latency, "tokens": wiki_res['tokens']},
-            judge_comparison=judge_score
+            gold_answer=gold_answer,
+            rag_answer=rag_res["answer"],
+            wiki_answer=wiki_res["answer"],
+            rag_metrics={"latency": latency, "tokens": rag_res["tokens"]},
+            wiki_metrics={"latency": latency, "tokens": wiki_res["tokens"]},
+            judge_comparison=comparison,
+            judge_model=self.judge_model
         )
+
+    async def _compare_answers(self, question: str, rag_ans: str, wiki_ans: str) -> dict:
+        prompt = f"Judge AI answers to: {question}\n\nA: {rag_ans}\nB: {wiki_ans}\nRate 1-5 for synthesis, factuality, reasoning. Return JSON."
+        res = await self.client.chat.completions.create(
+            model=self.judge_model,
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"},
+            temperature=0.0
+        )
+        return json.loads(res.choices[0].message.content)

@@ -1,10 +1,11 @@
 import os
 import json
 import time
+import asyncio
 from pathlib import Path
 from typing import List, Literal, Optional
 from pydantic import BaseModel, Field
-from openai import OpenAI
+from openai import AsyncOpenAI
 from dotenv import load_dotenv
 from tenacity import retry, wait_exponential, stop_after_attempt
 
@@ -19,23 +20,24 @@ class RoutingDecision(BaseModel):
 class LibrarianAgent:
     def __init__(self, api_key: Optional[str] = None, base_url: Optional[str] = None, model: Optional[str] = None):
         load_dotenv()
-        self.client = OpenAI(
+        self.client = AsyncOpenAI(
             base_url=base_url or os.getenv("NVIDIA_BASE_URL"),
             api_key=api_key or os.getenv("NVIDIA_API_KEY")
         )
         self.model = model or os.getenv("NVIDIA_MODEL")
 
-    def read_index(self, wiki_dir: Path) -> dict:
+    async def read_index(self, wiki_dir: Path) -> dict:
         index_path = wiki_dir / "index.json"
         if not index_path.exists():
             return {"pages": {}}
-        with open(index_path, "r", encoding="utf-8") as f:
-            return json.load(f)
+        import aiofiles
+        async with aiofiles.open(index_path, mode='r', encoding="utf-8") as f:
+            return json.loads(await f.read())
 
     @retry(wait=wait_exponential(multiplier=1, min=4, max=120), stop=stop_after_attempt(10))
-    def route_text(self, text: str, source_id: str, wiki_dir: Path) -> RoutingDecision:
+    async def route_text(self, text: str, source_id: str, wiki_dir: Path) -> RoutingDecision:
         start_time = time.time()
-        index_data = self.read_index(wiki_dir)
+        index_data = await self.read_index(wiki_dir)
         existing_pages = list(index_data["pages"].keys())
         
         system_instruction = (
@@ -44,7 +46,7 @@ class LibrarianAgent:
             "Return JSON: action, target_page, related_pages, reasoning."
         )
 
-        response = self.client.chat.completions.create(
+        response = await self.client.chat.completions.create(
             model=self.model,
             messages=[
                 {"role": "system", "content": system_instruction},

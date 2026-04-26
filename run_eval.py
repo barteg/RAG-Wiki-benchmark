@@ -1,60 +1,110 @@
-import os
+import asyncio
 import json
+import os
+import sqlite3
+import time
 from pathlib import Path
 from dotenv import load_dotenv
-from src.utils.rag_baseline import RAGBaseline
+from src.utils.rag_baseline import AdvancedRAG
 from src.eval.judge import EvalJudge
 
+# CONCURRENCY CONTROL
+MAX_CONCURRENT_TASKS = int(os.getenv("MAX_CONCURRENT_TASKS", "20"))
+semaphore = asyncio.Semaphore(MAX_CONCURRENT_TASKS)
 
-def run_benchmark():
+def init_checkpoint_db(project_root: Path):
+    db_path = project_root / "benchmarks" / "checkpoints.sqlite"
+    conn = sqlite3.connect(db_path)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS results (
+            item_id TEXT PRIMARY KEY,
+            result_json TEXT,
+            wall_clock_time FLOAT,
+            tokens_total INTEGER
+        )
+    """)
+    return conn
+
+async def benchmark_item(item, rag, judge, wiki_dir, checkpoint_conn):
+    item_id = item.get("id", str(hash(item["question"])))
+    cursor = checkpoint_conn.execute("SELECT result_json FROM results WHERE item_id = ?", (item_id,))
+    if cursor.fetchone(): return None # Already done
+
+    async with semaphore:
+        q = item["question"]
+        gold = item["answer"]
+        start = time.perf_counter()
+        try:
+            res = await judge.evaluate(q, gold, rag, wiki_dir)
+            duration = time.perf_counter() - start
+            res_dict = res.model_dump()
+            
+            checkpoint_conn.execute(
+                "INSERT INTO results (item_id, result_json, wall_clock_time, tokens_total) VALUES (?, ?, ?, ?)", 
+                (item_id, json.dumps(res_dict), duration, res_dict['wiki_metrics']['tokens'] + res_dict['rag_metrics']['tokens'])
+            )
+            checkpoint_conn.commit()
+            return res_dict
+        except Exception as e:
+            print(f"Error {item_id}: {e}")
+            return None
+
+async def run_benchmark():
     load_dotenv()
-    api_key = os.environ.get("AIzaSyAROBvBcUF2Ic7bSCUEw1LM1IlktwnCZPk")
     project_root = Path(__file__).parent
     wiki_dir = project_root / "data" / "04_wiki"
     rag_db_dir = project_root / "data" / "03_rag_db"
 
-    rag = RAGBaseline(db_path=rag_db_dir)
+    checkpoint_conn = init_checkpoint_db(project_root)
+    rag = AdvancedRAG(db_path=rag_db_dir)
     judge = EvalJudge()
 
-    # Load HotpotQA eval set
-    eval_path = project_root / "benchmarks" / "hotpot_eval.json"
-    with open(eval_path, "r") as f:
+    with open(project_root / "benchmarks" / "hotpot_eval.json", "r") as f:
         hotpot_set = json.load(f)
 
-    # Load index to get ingest times
+    # Economic Crossover Variables
     with open(wiki_dir / "index.json", "r") as f:
-        index_data = json.load(f)
+        idx = json.load(f)
+    
+    total_wiki_ingest_cost = sum(p.get("total_tokens", 0) for p in idx["pages"].values())
+    
+    print(f"Starting Symmetrical Benchmark (Model Locked: {os.getenv('NVIDIA_MODEL')})")
+    print(f"Wiki Build Cost: {total_wiki_ingest_cost} tokens")
+    
+    start_total = time.perf_counter()
+    tasks = [benchmark_item(item, rag, judge, wiki_dir, checkpoint_conn) for item in hotpot_set]
+    await asyncio.gather(*tasks)
+    
+    # Final Summary Generation for AI Verifier
+    cursor = checkpoint_conn.execute("SELECT result_json, wall_clock_time FROM results")
+    rows = cursor.fetchall()
+    
+    all_results = []
+    total_lat_rag = 0
+    total_lat_wiki = 0
+    for r_json, wall_time in rows:
+        d = json.loads(r_json)
+        all_results.append(d)
+        total_lat_rag += d['rag_metrics']['latency']
+        total_lat_wiki += d['wiki_metrics']['latency']
 
-    total_ingest_time = sum(p.get("total_ingest_time", 0) for p in index_data["pages"].values())
-    avg_ingest_time = total_ingest_time / len(index_data["pages"]) if index_data["pages"] else 0
-
-    results = []
-    print(f"\nStarting Benchmark Evaluation on {len(hotpot_set)} HotpotQA questions...")
-    print(f"--- PRE-COMPUTATION STATS ---")
-    print(f"Total Wiki Ingest Time: {total_ingest_time:.2f}s")
-    print(f"Avg Ingest Time per Page: {avg_ingest_time:.2f}s")
-    print(f"-----------------------------")
-    for item in hotpot_set:
-        q = item["question"]
-        gold_answer = item["answer"]
-        print(f"\n[Question]: {q}")
-        res = judge.evaluate(q, rag, wiki_dir)
-
-        # Add metrics to console output
-        print(f"  RAG Latency: {res.rag_metrics['latency']:.2f}s | Tokens: {res.rag_metrics['tokens']}")
-        print(f"  Wiki Latency: {res.wiki_metrics['latency']:.2f}s | Tokens: {res.wiki_metrics['tokens']}")
-        print(f"  Judge Verdict: Synthesis Score {res.judge_comparison.synthesis}/5")
-
-        # Add gold answer to results for reference
-        res_dict = res.model_dump()
-        res_dict["gold_answer"] = gold_answer
-        results.append(res_dict)
-    # Save results
-    output_path = project_root / "benchmarks" / "results.json"
-    with open(output_path, "w") as f:
-        json.dump(results, f, indent=4)
-    print(f"\nBenchmark Complete! Results saved to {output_path}")
-
+    summary = {
+        "benchmark_metadata": {
+            "model": os.getenv("NVIDIA_MODEL"),
+            "retention_period_days": 30, # Knowledge Half-life
+            "wiki_ingest_tokens": total_wiki_ingest_cost,
+            "rag_ingest_tokens": 0, # Baseline
+        },
+        "results": all_results,
+        "averages": {
+            "avg_rag_latency": total_lat_rag / len(all_results),
+            "avg_wiki_latency": total_lat_wiki / len(all_results)
+        }
+    }
+    
+    with open(project_root / "benchmarks" / "results.json", "w") as f:
+        json.dump(summary, f, indent=4)
+    print(f"Done. Results saved to benchmarks/results.json")
 
 if __name__ == "__main__":
-    run_benchmark()
+    asyncio.run(run_benchmark())

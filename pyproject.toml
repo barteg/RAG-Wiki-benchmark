@@ -11,6 +11,10 @@ dependencies = [
     "openai",
     "chromadb",
     "python-dotenv",
+    "langchain-text-splitters",
+    "sentence-transformers",
+    "aiofiles",
+    "tiktoken"
 ]
 
 [build-system]
