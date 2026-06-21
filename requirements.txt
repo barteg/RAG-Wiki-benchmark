@@ -1,0 +1,11 @@
+openai
+pydantic
+python-dotenv
+tenacity
+aiofiles
+chromadb
+sentence-transformers
+httpx
+langchain-text-splitters
+tiktoken
+pysqlite3-binary  # Often needed on HPC for updated sqlite3

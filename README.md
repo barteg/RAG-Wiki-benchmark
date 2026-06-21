@@ -39,10 +39,10 @@ This framework provides a scientifically rigorous, symmetrically-armed compariso
 ### 1. Configuration
 Create a `.env` file in the root directory:
 ```bash
-# Core API Config
-NVIDIA_API_KEY=your_api_key
-NVIDIA_BASE_URL=https://integrate.api.nvidia.com/v1
-NVIDIA_MODEL=meta/llama-3.1-70b-instruct # Locked for all agents
+# Core API Config (Prioritizes LLM_*, fallbacks to NVIDIA_*)
+LLM_API_KEY=your_api_key
+LLM_BASE_URL=https://integrate.api.nvidia.com/v1
+LLM_MODEL=meta/llama-3.1-70b-instruct # Locked for all agents
 
 # Benchmarking Config
 MAX_CONCURRENT_TASKS=50

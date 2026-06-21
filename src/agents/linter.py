@@ -18,10 +18,10 @@ class LinterAgent:
     def __init__(self, api_key: Optional[str] = None, base_url: Optional[str] = None, model: Optional[str] = None):
         load_dotenv()
         self.client = OpenAI(
-            base_url=base_url or os.getenv("NVIDIA_BASE_URL"),
-            api_key=api_key or os.getenv("NVIDIA_API_KEY")
+            base_url=base_url or os.getenv("LLM_BASE_URL") or os.getenv("NVIDIA_BASE_URL"),
+            api_key=api_key or os.getenv("LLM_API_KEY") or os.getenv("NVIDIA_API_KEY")
         )
-        self.model = model or os.getenv("NVIDIA_MODEL")
+        self.model = model or os.getenv("LLM_MODEL") or os.getenv("NVIDIA_MODEL")
 
     @retry(wait=wait_exponential(multiplier=1, min=4, max=120), stop=stop_after_attempt(10))
     def lint(self, target_page: str, new_text: str, wiki_dir: Path) -> Contradiction:

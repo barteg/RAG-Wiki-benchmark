@@ -7,3 +7,7 @@ data/02_processed/
 data/03_rag_db/
 data/04_wiki/
 benchmarks/results.json
+plgrid_api_key.txt
+logs/
+*.out
+*.err

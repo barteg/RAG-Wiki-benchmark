@@ -1,0 +1,952 @@
+[
+    {
+        "question": "Which magazine was started first Arthur's Magazine or First for Women?",
+        "gold": "Arthur's Magazine",
+        "rag": {
+            "answer": "{\"reasoning\": \"Arthur's Magazine was first published in 1844, while First for Women was started in 1989. Therefore, Arthur's Magazine was started earlier.\", \"final_answer\": \"Arthur's Magazine\"}",
+            "latency": 11.78486810499453,
+            "tokens": 1016
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"To answer this question, we need to look at the founding years of the two magazines. Arthur's Magazine was published from 1844 to 1846, while First for Women was started in 1989. Therefore, Arthur's Magazine was established earlier.\", \"final_answer\": \"Arthur's Magazine\"}",
+            "latency": 5.131947093002964,
+            "tokens": 1710
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Arthur's Magazine was first published in 1829, while First for Women was started in 1989. Therefore, Arthur's Magazine was started first.\", \"final_answer\": \"Arthur's Magazine\"}",
+            "latency": 1.7850580630038166,
+            "tokens": 1057
+        }
+    },
+    {
+        "question": "Which tennis player won more Grand Slam titles, Henri Leconte or Jonathan Stark?",
+        "gold": "Jonathan Stark",
+        "rag": {
+            "answer": "{\"reasoning\": \"Henri Leconte won one Grand Slam doubles title (French Open 1984) and one Grand Slam singles final (French Open 1988), while Jonathan Stark won two Grand Slam doubles titles (French Open 1994 and Wimbledon 1995 Mixed Doubles). Therefore, Stark won more Grand Slam titles than Leconte.\", \"final_answer\": \"Jonathan Stark\"}",
+            "latency": 10.904875484993681,
+            "tokens": 1337
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"In the given context, none of the players named Henri Leconte or Jonathan Stark are mentioned. Therefore, no comparison can be made based on the provided information.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 1.6844796060031513,
+            "tokens": 2570
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Jonathan Stark has 2 Grand Slam doubles titles and 1 Grand Slam mixed doubles title, while Henri Leconte won 1 Grand Slam doubles title and reached a men's singles final at the French Open.\", \"final_answer\": \"Jonathan Stark won more Grand Slam titles than Henri Leconte.\"}",
+            "latency": 5.909390854998492,
+            "tokens": 1102
+        }
+    },
+    {
+        "question": "Which band was founded first, Hole, the rock band that Courtney Love was a frontwoman of, or The Wolfhounds?",
+        "gold": "The Wolfhounds",
+        "rag": {
+            "answer": "{\"reasoning\": \"Based on the provided context, The Wolfhounds were formed in 1985, while Hole was formed in 1989. Therefore, The Wolfhounds were formed earlier.\", \"final_answer\": \"The Wolfhounds\"}",
+            "latency": 10.474908518997836,
+            "tokens": 1274
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"According to the provided context, 'Hole' was founded in 1989 and 'The Wolfhounds' in 1985, therefore 'The Wolfhounds' was founded first.\", \"final_answer\": \"The Wolfhounds\"}",
+            "latency": 5.573040244998992,
+            "tokens": 1690
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"The context provides information about the founding of Hole, but not The Wolfhounds. However, it states that Courtney Love began her professional career in film in 1986, before the formation of Hole in 1989.\", \"final_answer\": \"Hole, the rock band that Courtney Love was the frontwoman of, was founded in 1989, three years after The Wolfhounds were formed in 1986.\"}",
+            "latency": 2.9273603369947523,
+            "tokens": 2013
+        }
+    },
+    {
+        "question": "Were Pavel Urysohn and Leonid Levin known for the same type of work?",
+        "gold": "no",
+        "rag": {
+            "answer": "{\"reasoning\": \"Pavel Urysohn was a Soviet mathematician known for his contributions to topology, while Leonid Levin was a Soviet-American computer scientist. Their areas of expertise were different, falling under the broader category of mathematics, but they did not overlap.\", \"final_answer\": \"No, Pavel Urysohn and Leonid Levin were not known for the same type of work.\"}",
+            "latency": 16.426993542001583,
+            "tokens": 1047
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"The context does not provide information about Pavel Urysohn or Leonid Levin, so a comparison cannot be made.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 1.5349114239943447,
+            "tokens": 2310
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Pavel Urysohn was a mathematician known for his work in topology, while Leonid Levin was a computer scientist. Although both worked in different fields, they were contemporaries in the Soviet Union.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 1.4135219599993434,
+            "tokens": 856
+        }
+    },
+    {
+        "question": "Are both The New Pornographers and Kings of Leon American rock bands?",
+        "gold": "no",
+        "rag": {
+            "answer": "{\"reasoning\": \"Although Kings of Leon are from the US, The New Pornographers are a Canadian indie rock band.\", \"final_answer\": \"no\"}",
+            "latency": 10.043772297009127,
+            "tokens": 741
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"The New Pornographers, as indicated in the context, is a Canadian band from Vancouver. Kings of Leon is also mentioned in the context, but without any information on their nationality.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 5.911285366004449,
+            "tokens": 2345
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"From the context, we can see that The New Pornographers is a Canadian indie rock band formed in Vancouver, British Columbia, while Kings of Leon is an American rock band that formed in Nashville, Tennessee. Therefore, The New Pornographers is not an American rock band, but a Canadian one.\", \"final_answer\": \"both The New Pornographers and Kings of Leon are American rock bands\"}",
+            "latency": 2.9454815069912,
+            "tokens": 1247
+        }
+    },
+    {
+        "question": "750 7th Avenue and 101 Park Avenue, are located in which city?",
+        "gold": "New York City",
+        "rag": {
+            "answer": "{\"reasoning\": \"Neither of the two buildings mentioned in the question are finding a match in the available context.\", \"final_answer\": \"None\"}",
+            "latency": 7.208275675002369,
+            "tokens": 966
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"The addresses 750 7th Avenue and 101 Park Avenue are primarily associated with New York City, but the provided context does not contain any information about these addresses or New York City.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 1.97571586399863,
+            "tokens": 2586
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"750 7th Avenue is not mentioned in the given pages, but 101 Park Avenue is located in New York City.\", \"final_answer\": \"New York City\"}",
+            "latency": 2.450706909992732,
+            "tokens": 1095
+        }
+    },
+    {
+        "question": "Who was born first, Pablo Trapero or Aleksander Ford?",
+        "gold": "Aleksander Ford",
+        "rag": {
+            "answer": "{\"reasoning\": \"Aleksander Ford was born on 24 November 1908, and Pablo Trapero was born on 4 October 1971. Therefore, Aleksander Ford was born before Pablo Trapero.\", \"final_answer\": \"Aleksander Ford was born first.\"}",
+            "latency": 11.848557589997654,
+            "tokens": 1014
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Aleksander Ford was born in 1908, while Pablo Trapero was born in 1971. Therefore, Aleksander Ford was born first.\", \"final_answer\": \"Aleksander Ford\"}",
+            "latency": 1.6603186610009288,
+            "tokens": 1669
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Since Pablo Trapero was born in 1971 and Aleksander Ford was born in 1908, Aleksander Ford was born first.\", \"final_answer\": \"Aleksander Ford\"}",
+            "latency": 1.445983197001624,
+            "tokens": 833
+        }
+    },
+    {
+        "question": "Are Jane and First for Women both women's magazines?",
+        "gold": "yes",
+        "rag": {
+            "answer": "{\"reasoning\": \"Jane and First for Women magazines both appeal to female audiences, with Jane targeting women aged 18-34 and First for Women being a general women's magazine in the USA.\", \"final_answer\": \"Yes, Jane and First for Women are both women's magazines.\"}",
+            "latency": 9.611364227006561,
+            "tokens": 1442
+        },
+        "wiki_fast": {
+            "answer": "{\n  \"reasoning\": \"Jane and First for Women are both women's magazines. This is stated in the given information.\",\n  \"final_answer\": \"TRUE\"\n}",
+            "latency": 1.416199797007721,
+            "tokens": 1656
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Jane and First for Women are both magazines that appeal to women, as indicated in their descriptions.\", \"final_answer\": \"Yes\"}",
+            "latency": 1.6101727280038176,
+            "tokens": 1201
+        }
+    },
+    {
+        "question": "What profession does Nicholas Ray and Elia Kazan have in common?",
+        "gold": "director",
+        "rag": {
+            "answer": "{\"reasoning\": \"Nicholas Ray and Elia Kazan are both directors.\", \"final_answer\": \"director\"}",
+            "latency": 8.161594037999748,
+            "tokens": 787
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Based on the context, Nicholas Ray and Elia Kazan are both filmmakers. This is known because Elia Kazan directed 'On the Waterfront' (1954) and 'A Face in the Crowd' (1957), while Nicholas Ray directed 'Rebel Without a Cause' (1955) and 'In a Lonely Place' (1950).\", \"final_answer\": \"Film director (filmmaker).\"}",
+            "latency": 3.9616934199875686,
+            "tokens": 3455
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Nicholas Ray and Elia Kazan have the profession of 'director' in common.\", \"final_answer\": \"Director\"}",
+            "latency": 1.4240073840046534,
+            "tokens": 1064
+        }
+    },
+    {
+        "question": "Which documentary is about Finnish rock groups, Adam Clayton Powell or The Saimaa Gesture?",
+        "gold": "The Saimaa Gesture",
+        "rag": {
+            "answer": "{\"reasoning\": \"The provided context includes two documentaries that may be the answer to this question: 'The Saimaa Gesture' which is a documentary about Finnish rock groups, and 'Adam Clayton Powell' which is a documentary about the civil rights leader. The question specifically asks about Finnish rock groups, so 'The Saimaa Gesture' is the correct answer.\", \"final_answer\": \"The Saimaa Gesture\"}",
+            "latency": 12.235674665003899,
+            "tokens": 1399
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"The question asks about a documentary concerning Finnish rock groups. Neither of the provided options pertains to Finnish rock groups, however, the title \\\"The Saimaa Gesture\\\" is more related to Finland as Saimaa is a large lake in the southeastern portion of Finland.\", \"final_answer\": \"The Saimaa Gesture\"}",
+            "latency": 2.876905242999783,
+            "tokens": 2336
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"The context indicates that the documentary about Finnish rock groups is 'The Saimaa Gesture', as it is specifically described as a film about three Finnish rock groups on a tour around Lake Saimaa. 'Adam Clayton Powell' is a documentary about the civil rights leader Adam Clayton Powell Jr.\", \"final_answer\": \"The Saimaa Gesture\"}",
+            "latency": 7.278041325000231,
+            "tokens": 1269
+        }
+    },
+    {
+        "question": "Who was inducted into the Rock and Roll Hall of Fame, David Lee Roth or Cia Berg?",
+        "gold": "David Lee Roth",
+        "rag": {
+            "answer": "{\"reasoning\": \"David Lee Roth was inducted into the Rock and Roll Hall of Fame in 2007 as a member of Van Halen. Cia Berg is not mentioned in the provided context, so it is unclear whether she was ever a member of a band or artist that was inducted into the Rock and Roll Hall of Fame.\", \"final_answer\": \"David Lee Roth was inducted into the Rock and Roll Hall of Fame in 2007 as a member of Van Halen.\"}",
+            "latency": 8.949386341992067,
+            "tokens": 1732
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"According to the provided context, neither David Lee Roth nor Cia Berg have been inducted into the Rock and Roll Hall of Fame. However, the context provides information about various musicians and bands, but no mentions of any of them being inducted into the Rock and Roll Hall of Fame.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 2.4528252839954803,
+            "tokens": 1791
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Both David Lee Roth and Cia Berg were inducted into the Rock and Roll Hall of Fame.\", \"final_answer\": \"David Lee Roth and Cia Berg.\"}",
+            "latency": 2.641973704987322,
+            "tokens": 1271
+        }
+    },
+    {
+        "question": "Are Gin and tonic and Paloma both cocktails based on tequila?",
+        "gold": "no",
+        "rag": {
+            "answer": "{\"reasoning\": \"The information given is not enough to answer the question. Nowhere in the text is it mentioned what Paloma or Gin and tonic is made of.\", \"final_answer\": \"null\"}",
+            "latency": 8.58619020000333,
+            "tokens": 819
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Based on the provided context, I can reason that the answer to the question is 'NO'. Neither of the drinks - 'Gin and tonic' and 'Paloma' - are mentioned in the context, which means they have not been directly discussed in the provided information. However, based on common knowledge about these two drinks, it is clear that only one of them has tequila as its base - Paloma. Gin and tonic is a cocktail based on gin, not tequila.\", \"final_answer\": \"NO\"}",
+            "latency": 3.679062223993242,
+            "tokens": 2662
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"In the provided context, there is information that Paloma is a cocktail based on tequila, while Gin and tonic is based on gin, not tequila.\", \"final_answer\": \"Only Paloma is a tequila-based cocktail. Gin and tonic is based on gin.\"}",
+            "latency": 1.6358890530100325,
+            "tokens": 953
+        }
+    },
+    {
+        "question": "Who is older Glenn Hughes or Ross Lynch?",
+        "gold": "Glenn Hughes",
+        "rag": {
+            "answer": "{\"reasoning\": \"Glenn Hughes was born on 21 August 1951, and Ross Lynch's birth date is not provided in the context, so it's not possible to make a comparison.\", \"final_answer\": \"Glenn Hughes\"}",
+            "latency": 7.6926711370033445,
+            "tokens": 998
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Glenn Hughes, born in 1951, is an American musician. Ross Lynch, born in 1995, is an American singer and actor. According to my knowledge source, Glenn Hughes is older than Ross Lynch by 36 years.\", \"final_answer\": \"Glenn Hughes is older than Ross Lynch.\"}",
+            "latency": 3.4762183710117824,
+            "tokens": 3714
+        },
+        "wiki_smart": {
+            "answer": "{\n  \"reasoning\": \"Glenn Hughes was born in 1951, while Ross Lynch was born in 1995. Glenn Hughes is older.\",\n  \"final_answer\": \"Glenn Hughes\"\n}",
+            "latency": 1.613955041000736,
+            "tokens": 1612
+        }
+    },
+    {
+        "question": "Which band has more members, Saint Motel or Curve?",
+        "gold": "Saint Motel",
+        "rag": {
+            "answer": "{\"reasoning\": \"The Curve Lake First Nation is composed of multiple reserves, and the total population is 1791, whereas the band Saint Motel has 4 members.\", \"final_answer\": \"Curve\"}",
+            "latency": 7.179176377991098,
+            "tokens": 1652
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"After comparing the band membership information provided in the given context, it appears that Curve has more members than Saint Motel. However, it is not clear from the context how many members Saint Motel has, as this information was not provided.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 2.155128286991385,
+            "tokens": 2186
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Based on the provided information, the answer can be determined by comparing the number of members in both bands.\", \"final_answer\": \"Saint Motel has 4 members, while Curve Lake First Nation has no information about a band. Therefore, Saint Motel has more members than Curve.\"}",
+            "latency": 3.594878381001763,
+            "tokens": 853
+        }
+    },
+    {
+        "question": "Which private research university is located in Chestnut Hill, Massachusetts Boston College or Stanford University? ",
+        "gold": "Boston College",
+        "rag": {
+            "answer": "{\"reasoning\": \"Only Boston College is located in Chestnut Hill, Massachusetts. Stanford University is located in Stanford, California.\", \"final_answer\": \"Boston College\"}",
+            "latency": 3.903361787990434,
+            "tokens": 1550
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Stanford University is located in Stanford, California, not in Massachusetts. Boston College is a Jesuit research university in Chestnut Hill, Massachusetts, founded in 1863.\", \"final_answer\": \"Boston College\"}",
+            "latency": 1.8559140589932213,
+            "tokens": 2365
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"The question asks about the location of a private research university. The context provides information about the location of Boston College and Chestnut Hill, Massachusetts. Boston College is located in Chestnut Hill, Massachusetts. Stanford University is not mentioned in the context.\", \"final_answer\": \"Boston College\"}",
+            "latency": 7.289596959002665,
+            "tokens": 1455
+        }
+    },
+    {
+        "question": "Are both Tim McIlrath and Spike Slawson American punk rock musicians?",
+        "gold": "yes",
+        "rag": {
+            "answer": "{\"reasoning\": \"Tim McIlrath is the lead singer of the American punk rock band Rise Against. Spike Slawson is a member of Me First and the Gimme Gimmes, a notable American punk rock band.\", \"final_answer\": \"Yes, both Tim McIlrath and Spike Slawson are American punk rock musicians.\"}",
+            "latency": 8.699622361004003,
+            "tokens": 1463
+        },
+        "wiki_fast": {
+            "answer": "{\n  \"reasoning\": \"Tim McIlrath is an American punk rock musician, however I could not find any information about Spike Slawson's musical genre or nationality.\",\n  \"final_answer\": \"Insufficient information\"\n}",
+            "latency": 1.920160230001784,
+            "tokens": 2330
+        },
+        "wiki_smart": {
+            "answer": "{\n  \"reasoning\": \"Tim McIlrath is the lead singer and rhythm guitarist of the American punk rock band Rise Against, while Spike Slawson is a member of several punk rock groups, including Me First and the Gimme Gimmes, Swingin' Utters, and Filthy Thievin' Bastards.\",\n  \"final_answer\": \"Yes.\"\n}",
+            "latency": 3.4183189879986458,
+            "tokens": 1322
+        }
+    },
+    {
+        "question": "What profession does Am Rong and Alexandre Rockwell have in common?",
+        "gold": "filmmaker",
+        "rag": {
+            "answer": "{\"reasoning\": \"Am Rong and Alexandre Rockwell are both filmmakers and directors. Am Rong was a director of films in Vietnam, while Alexandre Rockwell directed numerous films such as 'Pete Smalls Is Dead' and 'Little Feet'.\", \"final_answer\": \"directing\"}",
+            "latency": 9.08649847000197,
+            "tokens": 1346
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Am Rong and Alexandre Rockwell are both directors.\", \"final_answer\": \"Director\"}",
+            "latency": 1.047929552005371,
+            "tokens": 3386
+        },
+        "wiki_smart": {
+            "answer": "{\n  \"reasoning\": \"Am Rong and Alexandre Rockwell do not share a profession as Am Rong is an\u00e1tka (housewife), while Alexandre Rockwell is a film director.\",\n  \"final_answer\": \"NOT_FOUND\"\n}",
+            "latency": 5.011033126997063,
+            "tokens": 1051
+        }
+    },
+    {
+        "question": "El Nuevo Cojo and Golf Magazine are both special interest publications but which one is owned by Time Inc?",
+        "gold": "Golf Magazine",
+        "rag": {
+            "answer": "{\"reasoning\": \"The provided context makes no mention of the ownership or publication details of \\\"El Nuevo Cojo\\\", a special interest publication in unspecified field. However, it does state that \\\"Golf Magazine is a monthly golf magazine owned by Time Inc\\\".\", \"final_answer\": \"Golf Magazine\"}",
+            "latency": 7.00307812099345,
+            "tokens": 1415
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Based on the provided information, Golf Magazine is owned by Time Inc. El Nuevo Cojo was not mentioned in the provided context.\", \"final_answer\": \"Golf Magazine\"}",
+            "latency": 1.5838545849983348,
+            "tokens": 2375
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"The given context includes information about the magazines 'El Nuevo Cojo Ilustrado' and 'Golf Magazine', where 'Golf Magazine' is stated to be owned by 'Time Inc.', while 'El Nuevo Cojo Ilustrado' has no mention of ownership by Time Inc.\", \"final_answer\": \"Golf Magazine\"}",
+            "latency": 3.8093229649966815,
+            "tokens": 1205
+        }
+    },
+    {
+        "question": "What city are George Washington University Hospital and MedStar Washington Hospital Center located in?",
+        "gold": "Washington, D.C.",
+        "rag": {
+            "answer": "{ \"reasoning\": [\"George Washington University Hospital and MedStar Washington Hospital Center are both located in Washington, D.C., the capital city of the United States.\", \"I assumed that you were referring to these hospitals because they are both affiliated with George Washington University and are major medical centers in the Washington D.C. area.\", \"If you were referring to different hospitals, please let me know and I will revise my answer.\"] }",
+            "latency": 11.956169211000088,
+            "tokens": 851
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"George Washington University Hospital and MedStar Washington Hospital Center were both mentioned in the same context, which suggests a possible association between them. However, the provided context does not contain any information about their location.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 2.6788924529973883,
+            "tokens": 2377
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Both hospitals are located in Washington, D.C. This information is present in the sections for MedStar Washington Hospital Center ('MedStar Washington Hospital Center is the largest private hospital in [[Washington, D.C.]]') and George Washington University Hospital ('The George Washington University Hospital is located in [[Washington, D.C.]] in the [[United States]].').\", \"final_answer\": \"Washington, D.C.\"}",
+            "latency": 4.168195535996347,
+            "tokens": 1047
+        }
+    },
+    {
+        "question": "Which industry do Richard Hawley and Chicago's Catherine belong to? ",
+        "gold": "rock band",
+        "rag": {
+            "answer": "{\n  \"reasoning\": \"Both Richard Hawley and the band Catherine, from Chicago, are musicians. Richard Hawley has released multiple studio albums and collaborated with other artists, such as Lisa Marie Presley, Arctic Monkeys, Manic Street Preachers, and Paul Weller. Catherine was an alternative rock band active from 1985 to 1998.\",\n  \"final_answer\": \"The music industry.\"\n}",
+            "latency": 7.218701609002892,
+            "tokens": 1064
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Based on the provided context, both Richard Hawley and Chicago's Catherine belong to the music industry. Richard Hawley is an English singer-songwriter and guitarist, who has released multiple successful albums. Chicago's Catherine was an indie rock band active in the Chicago music scene during the 1990s.\", \"final_answer\": \"music\"}",
+            "latency": 2.0078883719979785,
+            "tokens": 3177
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Based on the context, both Richard Hawley and the band Catherine belong to the music industry. Richard Hawley is an English guitarist, singer-songwriter, and producer, who has been active in the music industry since the 1990s. Catherine was an alternative rock band from Chicago, Illinois that was active from 1985 to 1998.\", \"final_answer\": \"music\"}",
+            "latency": 4.861486772002536,
+            "tokens": 1133
+        }
+    },
+    {
+        "question": "Are Pam Veasey and Jon Jost both American?",
+        "gold": "yes",
+        "rag": {
+            "answer": "{\"reasoning\": \"Pam Veasey and Jon Jost are both American film makers. Pam Veasey is a television producer and writer. She was born in the United States on May 25, 1962. Jon Jost is also a film maker from the United States. He was born on May 16, 1943 in Chicago, Illinois.\", \"final_answer\": \"true\"}",
+            "latency": 6.042018666994409,
+            "tokens": 1339
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \".Context nie zawiera informacji na temat narodowo\u015bci Pam Veasey i Jona Josta, jednak we fragmentach dotycz\u0105cych tych os\u00f3b nie ma r\u00f3wnie\u017c informacji, kt\u00f3re sugerowa\u0142yby, \u017ce s\u0105 oni cudzoziemcami.\", \"final_answer\": \"Nie mo\u017cna udzieli\u0107 jednoznacznej odpowiedzi na to pytanie na podstawie podanych fragment\u00f3w tekstu, ale mo\u017cna za\u0142o\u017cy\u0107, \u017ce zar\u00f3wno Pam Veasey, jak i Jon Jost s\u0105 Amerykanami.\"}",
+            "latency": 4.4947071820060955,
+            "tokens": 2448
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Pamela Renea Veasey is an American television writer, producer and director. Jon Jost is an American independent filmmaker.\", \"final_answer\": \"Yes\"}",
+            "latency": 1.2220901569962734,
+            "tokens": 822
+        }
+    },
+    {
+        "question": "Are the New Orleans Outfall Canals the same length as the Augusta Canal?",
+        "gold": "yes",
+        "rag": {
+            "answer": "{\"reasoning\": \"The provided context does not contain any information about the New Orleans Outfall Canals or the Augusta Canal, let alone their lengths. Therefore, it is not possible to determine whether they are the same length or not.\", \"final_answer\": \"There is no information available in the provided context to determine the lengths of the New Orleans Outfall Canals or the Augusta Canal, nor to compare them.\"}",
+            "latency": 6.413876507998793,
+            "tokens": 865
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"The given context does not provide information about the lengths of the New Orleans Outfall Canals or the Augusta Canal. Therefore, it is not possible to determine if they are the same length.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 2.8146709249995183,
+            "tokens": 3353
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"The New Orleans Outfall Canals consist of three canals that have a total length of 13 miles. The Augusta Canal is approximately 13 miles long as well. Therefore, the New Orleans Outfall Canals are the same length as the Augusta Canal.\", \"final_answer\": \"The New Orleans Outfall Canals are the same length as the Augusta Canal.\"}",
+            "latency": 4.476370822987519,
+            "tokens": 1176
+        }
+    },
+    {
+        "question": "Is Children's National Medical Center or MedStar Washington Hospital Center the largest private hospital in Washington, D.C.?",
+        "gold": "MedStar Washington Hospital Center",
+        "rag": {
+            "answer": "{\"reasoning\": \"MedStar Washington Hospital Center is the largest private hospital in Washington, D.C. It is licensed for 926 beds and offers health services in primary, secondary and tertiary care to adult and neonatal patients.\", \"final_answer\": \"MedStar Washington Hospital Center\"}",
+            "latency": 8.02946003600664,
+            "tokens": 1264
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Neither Children's National Medical Center nor MedStar Washington Hospital Center are mentioned in the provided context. Therefore, it is not possible to determine which one is the largest private hospital in Washington, D.C. based on the given information.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 1.6734011380031006,
+            "tokens": 1902
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"In the provided context, MedStar Washington Hospital Center is stated to be the largest private hospital in Washington, D.C. Children's National Medical Center does not have such a claim, and its size is not compared to MedStar Washington Hospital Center.\", \"final_answer\": \"MedStar Washington Hospital Center\"}",
+            "latency": 6.249570183004835,
+            "tokens": 1150
+        }
+    },
+    {
+        "question": "Are Wenling and Xinzheng both in China?",
+        "gold": "yes",
+        "rag": {
+            "answer": "{\"reasoning\": \"Tak, zar\u00f3wno Wenling, jak i Xinzheng znajduj\u0105 si\u0119 w Chinach, co zosta\u0142o potwierdzone w podanych informacjach.\", \"final_answer\": \"Tak\"}",
+            "latency": 5.285065627002041,
+            "tokens": 912
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Wenling and Xinzheng are both mentioned in the context as locations in China. Wenling is described as a county-level city in Zhejiang Province, while Xinzheng is a county-level city in Henan Province.\", \"final_answer\": \"Yes\"}",
+            "latency": 1.762625368006411,
+            "tokens": 3458
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Wenling is in Zhejiang province, China, while Xinzheng is in Henan province, China.\", \"final_answer\": \"Wenling and Xinzheng are both cities in China, located in different provinces.\"}",
+            "latency": 6.533322899995255,
+            "tokens": 873
+        }
+    },
+    {
+        "question": "G\u00fclhane Park and Zografeion Lyceum, are located in which country?",
+        "gold": "Turkey",
+        "rag": {
+            "answer": "{\"reasoning\": \"The provided context does not contain any information about G\u00fclhane Park or Zografeion Lyceum, so I cannot provide a reasoning for the location of these places.\", \"final_answer\": \"Turkey\"}",
+            "latency": 6.26907088200096,
+            "tokens": 825
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"G\u00fclhane Park and Zografeion Lyceum aren't mentioned in the provided context, so it's not possible to answer the question based on the given information.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 2.9387080460001016,
+            "tokens": 2273
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"G\u00fclhane Park and Zografeion Lyceum both mention Istanbul as their location, and Istanbul is part of Turkey.\", \"final_answer\": \"Turkey\"}",
+            "latency": 2.744351628993172,
+            "tokens": 1050
+        }
+    },
+    {
+        "question": "What type of vegetation does Kniphofia and Baptisia have in common?",
+        "gold": "plant",
+        "rag": {
+            "answer": "{\"reasoning\": \"The provided context does not contain any information about Kniphofia or Baptisia, nor does it mention any common vegetation between them. Therefore, it is not possible to answer the question based on the given information.\", \"final_answer\": \"I'm sorry, but I don't have enough information to answer this question. The provided context does not contain any information about Kniphofia or Baptisia, nor does it mention any common vegetation between them.\"}",
+            "latency": 7.224713594987406,
+            "tokens": 1383
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"According to the context, Kniphofia and Baptisia have in common that both are cultivated as ornamental plants, but there is no information about specific types of vegetation they share.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 1.2197924429929117,
+            "tokens": 3415
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Kniphofia and Baptisia are both flowering plants, but there is no indication that they share the same specific type of vegetation. Kniphofia is part of the Asphodelaceae family and is native to Africa, while Baptisia is part of the Fabaceae family and is native to North America. They are not discussed in the same context in the provided information.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 5.839208849996794,
+            "tokens": 1681
+        }
+    },
+    {
+        "question": "Are Manhattan West and Singer Building both projects in New York?",
+        "gold": "yes",
+        "rag": {
+            "answer": "{\"reasoning\": \"Manhattan West and Singer Building are not the same project. Manhattan West is a development project consisting of office, residential, and retail space west of Pennsylvania Station in Manhattan, New York City, while Singer Tower was an office building that once stood in Lower Manhattan and has since been demolished.\", \"final_answer\": \"Manhattan West and Singer Building are not the same project. Manhattan West is a development project consisting of office, residential, and retail space west of Pennsylvania Station in Manhattan, New York City, while Singer Tower was an office building that once stood in Lower Manhattan and has since been demolished.\"}",
+            "latency": 7.228509209002368,
+            "tokens": 1281
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"In the given context, there is no information about Manhattan West. However, Singer Building is mentioned as a project in New York.\", \"final_answer\": \"Singer Building\"}",
+            "latency": 2.7803866369940806,
+            "tokens": 2482
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Based on the context, both Manhattan West and Singer Building are located in New York City, Manhattan.\", \"final_answer\": \"TRUE\"}",
+            "latency": 3.8318824320012936,
+            "tokens": 1094
+        }
+    },
+    {
+        "question": "Between two tennis players Kim Clijsters and Mary Pierce, who is older?",
+        "gold": "Mary Pierce",
+        "rag": {
+            "answer": "{\"reasoning\": \"Mary Pierce was born on 15 January 1975, while Kim Clijsters was born on 8 June 1983. Therefore, Mary Pierce is older.\", \"final_answer\": \"Mary Pierce\"}",
+            "latency": 3.19310825499997,
+            "tokens": 640
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"The context provided does not contain information about the ages of Kim Clijsters and Mary Pierce. However, it is possible to infer based on the information available that this question is not related to the provided context.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 4.467644489006489,
+            "tokens": 2737
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Kim Clijsters was born on 8 June 1983, while Mary Pierce was born on 15 January 1975. Therefore, Mary Pierce is older.\", \"final_answer\": \"Mary Pierce\"}",
+            "latency": 1.9234203609958058,
+            "tokens": 1646
+        }
+    },
+    {
+        "question": "Pearl Lowe and Alison Goldfrapp, is of which nationality?",
+        "gold": "English",
+        "rag": {
+            "answer": "{\"reasoning\": \"Since none of the contexts mention anything about Pearl Lowe and Alison Goldfrapp, the answer is unclear.\", \"final_answer\": \"Cannot be determined based on the given information.\"}",
+            "latency": 7.074687657994218,
+            "tokens": 659
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"This question is not directly related to the provided context. It does not reference any of the people, places, or topics mentioned in the provided information. So I cannot infer an answer based on the provided context.\", \"final_answer\": \"Pearl Lowe and Alison Goldfrapp are British, based on additional research.\"}",
+            "latency": 2.3319901539944112,
+            "tokens": 2927
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Information about both Pearl Lowe and Alison Goldfrapp's nationality can be found in their respective Wikipedia articles.\", \"final_answer\": \"English\"}",
+            "latency": 4.2811219499999424,
+            "tokens": 920
+        }
+    },
+    {
+        "question": "Do musicians Robert Fleischman and Jimmy Barnes have the same nationality?",
+        "gold": "no",
+        "rag": {
+            "answer": "{\n  \"reasoning\": \"Since the given articles don't talk about the musicians Robert Fleischman and Jimmy Barnes, I can't tell you about their nationality.\",\n  \"final_answer\": \"No answer available.\"\n}",
+            "latency": 5.296790337000857,
+            "tokens": 769
+        },
+        "wiki_fast": {
+            "answer": "{\"answer\": [{\"Fleischman\": \"American\", \"Barnes\": \"Australian\"}, {\"reasoning\": \"The question asks whether the two musicians have the same nationality. The context provides information about the nationalities of both musicians, and the answer is that they do not share the same nationality - one is American, and the other is Australian.\"}, {\"final_answer\": [{\"Fleischman\": \"American\", \"Barnes\": \"Australian\"}] }]}",
+            "latency": 5.062068746992736,
+            "tokens": 2975
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Robert Fleischman is an American musician, whereas Jimmy Barnes is a Scottish-Australian rock singer-songwriter.\", \"final_answer\": \"No\"}",
+            "latency": 1.2273037679988192,
+            "tokens": 1181
+        }
+    },
+    {
+        "question": "Which musician, Edwyn Collins or Jimmie Ross, played the bass guitar?",
+        "gold": "Jimmie Ross",
+        "rag": {
+            "answer": "{\"reasoning\": \"Jimmie Ross played the bass guitar as a member of the Jaggerz, while Edwyn Collins was the lead singer of Orange Juice.\", \"final_answer\": {\"answer\": [\"Jimmie Ross\"], \"justification\": [\"Jimmie Ross is described as the bassist in the Jaggerz, while Edwyn Collins is only mentioned as the lead singer of Orange Juice.\", \"There is no mention of Edwyn Collins playing the bass guitar in the provided context.\"]} }",
+            "latency": 6.964080207995721,
+            "tokens": 871
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"In the provided context, there is no information about a musician named Jimmie Ross, and no information about Edwyn Collins playing the bass guitar. However, there are other musicians mentioned who played the bass guitar, such as 'Juan Alderete de la Pe\u00f1a', 'Jonathan Hischke', and 'Richard Jones'.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 2.1338385339913657,
+            "tokens": 2345
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"In the provided context, there is no information about Jimmie Ross or his musical abilities. Edwyn Collins is mentioned as the lead singer of the band Orange Juice, but there is no mention of him playing the bass guitar. Therefore, the final answer is set to 'NOT_FOUND'.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 3.6016471680050017,
+            "tokens": 1275
+        }
+    },
+    {
+        "question": "Jane's Addiction and Weeping Willows, play which genre of music?",
+        "gold": "rock",
+        "rag": {
+            "answer": "{\"reasoning\": \"Jane's Addiction is an American rock band from Los Angeles, formed in 1985, while Weeping Willows (Magnus Carlson) is a Swedish indie rock group that started in 1995.\", \"final_answer\": \"Both bands play rock music.\"}",
+            "latency": 6.937105125005473,
+            "tokens": 988
+        },
+        "wiki_fast": {
+            "answer": "{\n  \"reasoning\": \"It is not possible to answer this question using the provided context, as I do not have information about the bands 'Jane's Addiction' or 'Weeping Willows'.\",\n  \"final_answer\": \"NOT_FOUND\"\n}",
+            "latency": 1.8368549669976346,
+            "tokens": 2783
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Both Jane's Addiction and Weeping Willows are rock bands, but they play different subgenres of rock music. Jane's Addiction is primarily classified as alternative rock, while Weeping Willows is an indie rock group.\", \"final_answer\": \"rock\"}",
+            "latency": 6.241384294000454,
+            "tokens": 1476
+        }
+    },
+    {
+        "question": "Were both Joseph Roth and Cid Corman authors?",
+        "gold": "yes",
+        "rag": {
+            "answer": "{\"reasoning\": \"Both Joseph Roth and Cid Corman were authors, but writing in different fields. Joseph Roth was an Austrian-Jewish novelist, best known for his books such as 'Radetzky March' and 'Job', as well as his journalistic work in Berlin and Paris. On the other hand, Cid Corman was an American poet, known for his extensive oeuvre of poems and translations, as well as his correspondence with other poets.\", \"final_answer\": \"Yes, both Joseph Roth and Cid Corman were authors, but writing in different fields.\"}",
+            "latency": 8.164071210005204,
+            "tokens": 1502
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Joseph Roth and Cid Corman are both mentioned in the context as authors, without any conflicting information.\", \"final_answer\": \"Yes.\"}",
+            "latency": 5.89459357499436,
+            "tokens": 2967
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Joseph Roth was an Austrian-Jewish novelist and journalist, best known for his work 'Radetzkymarsch'. His name is mentioned in the context along with other authors such as Kafka and D\u00f6blin in the Verlag Die Schmiede section. Cid Corman, on the other hand, is not mentioned anywhere in the provided context. So, while Joseph Roth is confirmed to be an author, there is no information available about Cid Corman's status as an author.\", \"final_answer\": \"Joseph Roth was an author, but no evidence is available that Cid Corman was an author.\"}",
+            "latency": 3.189916005998384,
+            "tokens": 1443
+        }
+    },
+    {
+        "question": "Who was born first, Odysseas Elytis or Cornel West?",
+        "gold": "Odysseas Elytis",
+        "rag": {
+            "answer": "{\"reasoning\": \"Odysseas Elytis was born in 1911, while Cornel West was born in 1953. Therefore, Odysseas Elytis was born first.\", \"final_answer\": \"Odysseas Elytis\"}",
+            "latency": 6.75044658499246,
+            "tokens": 1235
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Odysseas Elytis was born on November 2, 1911, while Cornel West was born on June 2, 1953. Therefore, Elytis was born first.\", \"final_answer\": \"Odysseas Elytis\"}",
+            "latency": 1.8675672329991357,
+            "tokens": 1689
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Odysseas Elytis was born on 2 November 1911, while Cornel West was born on 2 June 1953. Therefore Elytis was born first.\", \"final_answer\": \"Odysseas Elytis\"}",
+            "latency": 1.8810520950064529,
+            "tokens": 936
+        }
+    },
+    {
+        "question": "Superheaven and Oceansize, are bands of which shared genre?",
+        "gold": "rock",
+        "rag": {
+            "answer": "{\"reasoning\": \"From the provided context information, we can see that both Superheaven and Oceansize are mentioned as rock bands. However, Superheaven is described as an alternative rock band, while Oceansize is simply referred to as a rock band. Therefore, we can conclude that they share the genre of rock, but may have slightly different subgenres.\", \"final_answer\": \"Both Superheaven and Oceansize are rock bands, but they may have slightly different subgenres.\"}",
+            "latency": 9.585403113000211,
+            "tokens": 1339
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"The band Oceansize played several rock genres and their final album was self-titled 'Oceansize'. It is hard to claim they are related to the band Superheaven, whose album was self-titled 'Jar'. Superheaven was previously known as 'Daylight' and were an alternative rock band.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 3.7558590509870555,
+            "tokens": 3067
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"In the provided context, we can see that Superheaven and Oceansize are both associated with the 'emo' genre, even though they are not directly mentioned together. Superheaven was formed in 2008 and is an American alternative rock band, while Oceansize was a rock band operating from 1998 to 2011. Both bands are considered to be part of the emo genre, which is characterized by emotional expression and introspective lyrics.\", \"final_answer\": \"emo\"}",
+            "latency": 4.189386270008981,
+            "tokens": 1319
+        }
+    },
+    {
+        "question": "Who has more scope of profession, Richard Ford or Robert E. Howard?",
+        "gold": "Richard Ford",
+        "rag": {
+            "answer": "{\"reasoning\": \"Richard Ford is known for his works in the realms of novel and short story writing, while Robert E. Howard is primarily associated with pulp fiction, dark fantasy, and horror. Both have made significant contributions to their respective genres, but Ford seems to have a slightly wider range of literary forms in his body of work.\", \"final_answer\": \"Richard Ford\"}",
+            "latency": 13.498171590996208,
+            "tokens": 1273
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Robert E. Howard by\u0142 wy\u0142\u0105cznie pisarzem, podczas gdy Richard Ford jest nie tylko pisarzem, ale tak\u017ce profesorem na Wydziale Anglistyki na Uniwersytecie Stevensa.\", \"final_answer\": \"Richard Ford\"}",
+            "latency": 3.486371217004489,
+            "tokens": 3175
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Richard Ford and Robert E. Howard were both writers, but their scope of profession cannot be compared directly as they worked in different fields. Ford was a novelist and short story writer, while Howard was an author of pulp fiction in various genres.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 3.104642196005443,
+            "tokens": 1647
+        }
+    },
+    {
+        "question": "Which movie was released first, The Hunchback of Notre Dame or Saludos Amigos?",
+        "gold": "Saludos Amigos",
+        "rag": {
+            "answer": "{\"reasoning\": \"Saludos Amigos premiered in Rio de Janeiro on August 24, 1942, while The Hunchback of Notre Dame is a 1996 film.\", \"final_answer\": \"Saludos Amigos\"}",
+            "latency": 7.286370297995745,
+            "tokens": 1156
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Both 'The Hunchback of Notre Dame' and 'Saludos Amigos' are movies, but they were released in different years. 'Saludos Amigos' was released first in 1942, while 'The Hunchback of Notre Dame' was released in 1996.\", \"final_answer\": \"Saludos Amigos\"}",
+            "latency": 1.828162694000639,
+            "tokens": 1703
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"The release date for 'The Hunchback of Notre Dame' is 1996, while 'Saludos Amigos' was released in 1942. Therefore, 'Saludos Amigos' is the first film to be released.\", \"final_answer\": \"Saludos Amigos\"}",
+            "latency": 3.9949722710007336,
+            "tokens": 1587
+        }
+    },
+    {
+        "question": "Who is the former professional tennis player from Italy, Chris Evert or Mara Santangelo?",
+        "gold": "Mara Santangelo",
+        "rag": {
+            "answer": "{\"reasoning\": \"When looking at the context provided, there is information about Mara Santangelo being a former professional tennis player from Italy. There is no information about Chris Evert being Italian or retiring from professional tennis.\", \"final_answer\": \"Mara Santangelo.\"}",
+            "latency": 6.561575232000905,
+            "tokens": 856
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"From the context, it is clear that the question is about a former Italian tennis player, but neither Chris Evert nor Mara Santangelo are mentioned in the provided context.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 1.1704896450100932,
+            "tokens": 2521
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Mara Santangelo is a former professional tennis player from Italy, as stated in the context. Chris Evert is a former professional tennis player from the United States.\", \"final_answer\": \"Mara Santangelo\"}",
+            "latency": 1.383149104003678,
+            "tokens": 745
+        }
+    },
+    {
+        "question": "Which is currently more valuable, Temagami-Lorrain Mine or Meadowbank Gold Mine?",
+        "gold": "Meadowbank Gold Mine",
+        "rag": {
+            "answer": "{\"reasoning\": \"The listings provided in the Context are unrelated to each other and do not contain any information about the value of either Temagami-Lorrain Mine or Meadowbank Gold Mine. Therefore, it is not possible to answer the question based on the given information.\", \"final_answer\": \"The provided information does not allow for a definitive answer to this question.\"}",
+            "latency": 6.820859936997294,
+            "tokens": 888
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"The provided context does not contain any information about the current value of either Temagami-Lorrain Mine or Meadowbank Gold Mine. Therefore, it is not possible to determine which one is more valuable at the moment.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 1.7733473560074344,
+            "tokens": 2712
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Based on the available information, Temagami-Lorrain Mine is an abandoned surface and underground mine, while Meadowbank Gold Mine is an open pit gold mine currently operated by Agnico Eagle Mines. This suggests that Meadowbank Gold Mine is currently more valuable as it is actively in use.\", \"final_answer\": \"Meadowbank Gold Mine\"}",
+            "latency": 6.290430562003166,
+            "tokens": 931
+        }
+    },
+    {
+        "question": "Who was born first Neil LaBute or H. Bruce Humberstone?",
+        "gold": "H. Bruce \"Lucky\" Humberstone",
+        "rag": {
+            "answer": "{\"reasoning\": \"Neil LaBute was born in 1963, H. Bruce Humberstone was born in 1901. H. Bruce Humberstone was born first.\", \"final_answer\": \"H. Bruce Humberstone.\"}",
+            "latency": 5.131985972009716,
+            "tokens": 1189
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Based on the context information provided, it is not possible to determine who was born first between Neil LaBute and H. Bruce Humberstone, since no data regarding their birth dates is available.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 1.4337616190023255,
+            "tokens": 1679
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"H. Bruce Humberstone was born on November 18, 1901 (died on October 11, 1984), while Neil LaBute was born on March 19, 1963. Humberstone was born first, more than 61 years before LaBute.\", \"final_answer\": \"H. Bruce Humberstone was born first.\"}",
+            "latency": 8.199182702999678,
+            "tokens": 1131
+        }
+    },
+    {
+        "question": "Were Eatza Pizza and Your Pie founded in the same state?",
+        "gold": "no",
+        "rag": {
+            "answer": "{\"reasoning\": \"Eatza Pizza was founded in Arizona, while Your Pie was founded in Georgia.\", \"final_answer\": \"no\"}",
+            "latency": 4.62082678200386,
+            "tokens": 890
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"No information about Eatza Pizza and Your Pie was found in the context.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 1.6075149850075832,
+            "tokens": 2224
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Eatza Pizza was founded in Arizona, while Your Pie was founded in Georgia, according to the provided information.\", \"final_answer\": \"No\"}",
+            "latency": 3.6708682980097365,
+            "tokens": 784
+        }
+    },
+    {
+        "question": "Who is younger Mary Ramsey or Lee Ranaldo ?",
+        "gold": "Mary Ramsey",
+        "rag": {
+            "answer": "{\"reasoning\": \"Mary Ramsey urodzi\u0142a si\u0119 24-go grudnia 1963 roku, a Lee Ranaldo 3-go lutego 1956 roku. Lee Ranaldo jest starszy od Mary Ramsey o 7 lat.\", \"final_answer\": \"Mary Ramsey jest m\u0142odsza od Lee Ranalda o 7 lat.\"}",
+            "latency": 7.060810702998424,
+            "tokens": 1256
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Mary Doria Russell's year of birth is given as 1950, while Lee Ranaldo's is 1956. Since 1950 is earlier than 1956, Mary Doria Russell is older than Lee Ranaldo.\", \"final_answer\": \"Mary Doria Russell is older than Lee Ranaldo.\"}",
+            "latency": 2.3213073070073733,
+            "tokens": 2408
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Mary Ramsey was born on December 24, 1963, while Lee Ranaldo was born on February 3, 1956. Therefore, Mary Ramsey is younger than Lee Ranaldo.\", \"final_answer\": \"Mary Ramsey\"}",
+            "latency": 6.074474579989328,
+            "tokens": 1537
+        }
+    },
+    {
+        "question": "Which of the following is best known for publicly championing a terminal patient's right to die via physician-assisted suicide: Christy Canyon or Jack Kevorkian?",
+        "gold": "Jacob \"Jack\" Kevorkian",
+        "rag": {
+            "answer": "{\"reasoning\": \"Jack Kevorkian is best known for publicly championing a terminal patient's right to die via physician-assisted suicide; he claimed to have assisted at least 130 patients to that end. Christy Canyon is a former adult actress, not known for any activism related to physician-assisted suicide.\", \"final_answer\": \"Jack Kevorkian.\"}",
+            "latency": 7.687215747006121,
+            "tokens": 1218
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"While I was unable to find information on whether Christy Canyon was associated with this cause, Jack Kevorkian was infamously known for this issue.\", \"final_answer\": \"Jack Kevorkian\"}",
+            "latency": 2.4137829139945097,
+            "tokens": 2454
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"In the given context, Jack Kevorkian is best known for publicly championing a terminal patient's right to die via physician-assisted suicide, as stated in his biography: 'He is best known for publicly championing a terminal patient's right to die via physician-assisted suicide; he claimed to have assisted at least 130 patients to that end.'\", \"final_answer\": \"Jack Kevorkian\"}",
+            "latency": 6.64832915799343,
+            "tokens": 1334
+        }
+    },
+    {
+        "question": "Sojourners and KO Magazine share what publication format?",
+        "gold": "magazine",
+        "rag": {
+            "answer": "{\"reasoning\": \"The provided contexts do not mention Sojourners or KO Magazine, so it is not possible to determine what publication format they share.\", \"final_answer\": \"None\"}",
+            "latency": 7.90468021799461,
+            "tokens": 719
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Per the given context, \\\"Sojourners\\\" and \\\"KO Magazine\\\" are both magazines, meaning they share a monthly publication format.\", \"final_answer\": \"monthly\"}",
+            "latency": 2.9342060900089564,
+            "tokens": 2937
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Sojourners magazine and KO Magazine are both magazines, which is a publication format. However, only Sojourners is specifically mentioned in the context, so it is not clear if KO Magazine shares the same format.\", \"final_answer\": \"both are magazines\"}",
+            "latency": 4.895460676998482,
+            "tokens": 1471
+        }
+    },
+    {
+        "question": "In between Memphis International Airport and Southwest Georgia Regional Airport which one is in Tennessee?",
+        "gold": "Memphis International Airport",
+        "rag": {
+            "answer": "{\"reasoning\": \"The context provided does not contain information about Southwest Georgia Regional Airport. However, Memphis International Airport is located in Tennessee, as stated in the provided context.\", \"answer\": \"Memphis International Airport.\"}",
+            "latency": 5.175054512001225,
+            "tokens": 860
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Memphis International Airport is located in Memphis, Tennessee, while Southwest Georgia Regional Airport is located in Georgia. Since neither city is located in Tennessee, the answer is that neither airport is located in Tennessee.\", \"final_answer\": \"Neither.\"}",
+            "latency": 5.1023080429877155,
+            "tokens": 2415
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"The context does not contain any direct information about the location of these airports in relation to each other, but it does provide information about the states they are located in. Memphis International Airport is located in Tennessee, while Southwest Georgia Regional Airport is located in Georgia.\", \"final_answer\": \"Memphis International Airport is in Tennessee.\"}",
+            "latency": 4.113565425999695,
+            "tokens": 790
+        }
+    },
+    {
+        "question": "Which airport is closer to Cleaveland, Ohio, Luis Mu\u00f1oz Mar\u00edn International Airport or Rickenbacker International Airport?",
+        "gold": "Rickenbacker International Airport",
+        "rag": {
+            "answer": "{\"reasoning\": \"Rickenbacker International Airport is located near Columbus, Ohio, which is about 140 miles away from Cleveland, Ohio. Luis Mu\u00f1oz Mar\u00edn International Airport is located in Puerto Rico, which is much further away from Cleveland, Ohio than Rickenbacker International Airport.\", \"final_answer\": \"Rickenbacker International Airport\"}",
+            "latency": 9.045658351999009,
+            "tokens": 1236
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"I don't have information on either airport in relation to Cleveland, Ohio. However, I can provide information on Luis Mu\u00f1oz Mar\u00edn International Airport and Rickenbacker International Airport separately.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 1.391885667006136,
+            "tokens": 2738
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Upon investigation, the answer to the provided question is not present in the given contents.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 3.4000861560052726,
+            "tokens": 1217
+        }
+    },
+    {
+        "question": "What profession do K\u014db\u014d Abe and Agatha Christie share?",
+        "gold": "playwright",
+        "rag": {
+            "answer": "{\"reasoning\": \"K\u014db\u014d Abe and Agatha Christie are both authors, but their names are not included in the provided context. I assume you are asking about the professions of some of the people mentioned in the context. For example, Milo\u0161 Forman is a film director, screenwriter, actor, and professor.\", \"final_answer\": \"They are not listed in the provided context.\"}",
+            "latency": 7.413055166005506,
+            "tokens": 969
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"The professions of K\u014db\u014d Abe and Agatha Christie can be found in the context. They are both writers.\", \"final_answer\": \"writer\"}",
+            "latency": 1.3947480639908463,
+            "tokens": 3187
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"While K\u014db\u014d Abe and Agatha Christie were both writers, they wrote in different languages (Japanese and English respectively) and in different genres (Abe in literary fiction and Christie in crime fiction). Therefore, it is not accurate to say that they shared a profession, at least not in the sense of a specific field or genre.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 4.3115013080096105,
+            "tokens": 1693
+        }
+    },
+    {
+        "question": "Jinchang and Liling, are located in which country?",
+        "gold": "China",
+        "rag": {
+            "answer": "{\"reasoning\": \"Jinchang i Liling, s\u0105 po\u0142o\u017cone w Chinach, poniewa\u017c s\u0105 to miasta, kt\u00f3re znajduj\u0105 si\u0119 w prowincjach Chin i nie ma informacji o ich po\u0142o\u017ceniu w innym kraju.\", \"final_answer\": \"Chiny\"}",
+            "latency": 4.307273341997643,
+            "tokens": 658
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Jinchang and Liling are mentioned in the context of 'Cities in China with suffix -chang', which indicates that they are located in China.\", \"final_answer\": \"China\"}",
+            "latency": 2.8376045970071573,
+            "tokens": 2668
+        },
+        "wiki_smart": {
+            "answer": "{\n  \"reasoning\": \"Jinchang is located in China, specifically in the Gansu province, while Liling is also located in China, in the Hunan province.\",\n  \"final_answer\": \"China\"\n}",
+            "latency": 1.5065566879929975,
+            "tokens": 1626
+        }
+    },
+    {
+        "question": "What type of vegetation does Fothergilla and Clerodendrum have in common?",
+        "gold": "plants",
+        "rag": {
+            "answer": "{\"reasoning\": \"Fothergilla is a deciduous shrub, while Clerodendrum is a perennial shrub. Both are woody plants that belong to different families (Hamamelidaceae and Lamiaceae, respectively).\", \"final_answer\": \"Neither Fothergilla nor Clerodendrum have specific types of vegetation in common other than both being shrubs.\"}",
+            "latency": 6.112827260993072,
+            "tokens": 845
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"I found no information in the provided context about specific vegetation shared by Fothergilla and Clerodendrum. However, I did find several mentions of these plants as part of the vegetation at the Tyler Arboretum in Pennsylvania.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 1.6226014169951668,
+            "tokens": 3427
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"A: Based on the provided information, Fothergilla and Clerodendrum belong to different families and biomes. Fothergilla is a deciduous shrub in the family Hamamelidaceae, commonly found in the southeastern United States. Clerodendrum, on the other hand, is a genus of flowering plants in the family Lamiaceae, which is sometimes classified under Verbenaceae. Both Fothergilla and Clerodendrum are woody shrubs, but they are adapted to different habitats and have different ecological niches.\", \"final_answer\": \"Fothergilla and Clerodendrum do not share any significant commonalities in their type of vegetation.\"}",
+            "latency": 3.6315448810055386,
+            "tokens": 1554
+        }
+    },
+    {
+        "question": "Which director is American, Mark L. Lester or Ken Loach?",
+        "gold": "Mark L. Lester",
+        "rag": {
+            "answer": "{\"reasoning\": \"Mark L. Lester is an American film director, screenwriter, and producer best known for directing cult films such as \\\"Commando\\\" and \\\"Armed and Dangerous\\\".\", \"final_answer\": \"Mark L. Lester.\"}",
+            "latency": 5.1969788529968355,
+            "tokens": 1333
+        },
+        "wiki_fast": {
+            "answer": "{\"reasoning\": \"Knowing that Mark L. Lester is an American director is not sufficient to answer the question because the nationality of Ken Loach is not known from the context. Therefore, the final answer is set to 'NOT_FOUND'.\", \"final_answer\": \"NOT_FOUND\"}",
+            "latency": 1.7032915629970375,
+            "tokens": 2403
+        },
+        "wiki_smart": {
+            "answer": "{\"reasoning\": \"Mark L. Lester (born November 26, 1946) is an American film director, screenwriter, and producer (...) Kenneth Charles Loach (born 17 June 1936) is an English director of television and independent film.\", \"final_answer\": \"Mark L. Lester is American director, Ken Loach is English director.\"}",
+            "latency": 2.008817593989079,
+            "tokens": 983
+        }
+    }
+]

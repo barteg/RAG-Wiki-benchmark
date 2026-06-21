@@ -38,6 +38,7 @@ async def benchmark_item(item, rag, judge, wiki_dir, checkpoint_conn):
             res = await judge.evaluate(q, gold, rag, wiki_dir)
             duration = time.perf_counter() - start
             res_dict = res.model_dump()
+            res_dict["level"] = item.get("level", "unknown")
             
             checkpoint_conn.execute(
                 "INSERT INTO results (item_id, result_json, wall_clock_time, tokens_total) VALUES (?, ?, ?, ?)", 
@@ -59,8 +60,31 @@ async def run_benchmark():
     rag = AdvancedRAG(db_path=rag_db_dir)
     judge = EvalJudge()
 
-    with open(project_root / "benchmarks" / "hotpot_eval.json", "r") as f:
-        hotpot_set = json.load(f)
+    def get_stratified_data(path, limit):
+        data = json.load(open(path, "r"))
+        if limit <= 0: return data
+        target = limit // 3
+        res, counts = [], {"easy": 0, "medium": 0, "hard": 0}
+        for item in data:
+            lvl = item.get("level", "medium")
+            if counts.get(lvl, 0) < target:
+                res.append(item)
+                counts[lvl] = counts.get(lvl, 0) + 1
+        rem = limit - len(res)
+        if rem > 0:
+            for item in data:
+                if item not in res:
+                    res.append(item)
+                    rem -= 1
+                    if rem == 0: break
+        return res
+
+    LIMIT = int(os.getenv("BENCHMARK_LIMIT", "120"))
+    data_file = project_root / "hotpot_train_v1.1.json"
+    if not data_file.exists():
+        data_file = project_root / "benchmarks" / "hotpot_eval.json"
+        
+    hotpot_set = get_stratified_data(data_file, LIMIT)
 
     # Economic Crossover Variables
     with open(wiki_dir / "index.json", "r") as f:
@@ -68,7 +92,7 @@ async def run_benchmark():
     
     total_wiki_ingest_cost = sum(p.get("total_tokens", 0) for p in idx["pages"].values())
     
-    print(f"Starting Symmetrical Benchmark (Model Locked: {os.getenv('NVIDIA_MODEL')})")
+    print(f"Starting Symmetrical Benchmark (Model Locked: {os.getenv('LLM_MODEL') or os.getenv('NVIDIA_MODEL')})")
     print(f"Wiki Build Cost: {total_wiki_ingest_cost} tokens")
     
     start_total = time.perf_counter()
@@ -80,31 +104,52 @@ async def run_benchmark():
     rows = cursor.fetchall()
     
     all_results = []
-    total_lat_rag = 0
-    total_lat_wiki = 0
+    stats = {
+        "rag": {"latency": 0, "tokens": 0, "f1": 0, "em": 0},
+        "wiki": {"latency": 0, "tokens": 0, "f1": 0, "em": 0},
+        "zero_shot": {"latency": 0, "tokens": 0, "f1": 0, "em": 0}
+    }
+    
+    count = len(rows)
     for r_json, wall_time in rows:
         d = json.loads(r_json)
         all_results.append(d)
-        total_lat_rag += d['rag_metrics']['latency']
-        total_lat_wiki += d['wiki_metrics']['latency']
+        for key in ["rag", "wiki", "zero_shot"]:
+            m = d[f"{key}_metrics"]
+            stats[key]["latency"] += m["latency"]
+            stats[key]["tokens"] += m["tokens"]
+            stats[key]["f1"] += m["f1"]
+            stats[key]["em"] += 1 if m["em"] else 0
+
+    # Economic Crossover Calculation (N)
+    # N = (Wiki_Ingest_Cost - RAG_Ingest_Cost) / (RAG_Query_Cost - Wiki_Query_Cost)
+    avg_wiki_q_cost = stats["wiki"]["tokens"] / count
+    avg_rag_q_cost = stats["rag"]["tokens"] / count
+    
+    cost_diff_q = avg_rag_q_cost - avg_wiki_q_cost
+    if cost_diff_q > 0:
+        n_crossover = total_wiki_ingest_cost / cost_diff_q
+    else:
+        n_crossover = float('inf') # Wiki is more expensive per query or equal
 
     summary = {
         "benchmark_metadata": {
-            "model": os.getenv("NVIDIA_MODEL"),
-            "retention_period_days": 30, # Knowledge Half-life
+            "model": os.getenv("LLM_MODEL") or os.getenv("NVIDIA_MODEL"),
             "wiki_ingest_tokens": total_wiki_ingest_cost,
-            "rag_ingest_tokens": 0, # Baseline
+            "economic_crossover_queries": n_crossover,
+            "data_leakage_risk": stats["zero_shot"]["em"] / count > 0.5
         },
-        "results": all_results,
         "averages": {
-            "avg_rag_latency": total_lat_rag / len(all_results),
-            "avg_wiki_latency": total_lat_wiki / len(all_results)
-        }
+            "rag": {k: v / count for k, v in stats["rag"].items()},
+            "wiki": {k: v / count for k, v in stats["wiki"].items()},
+            "zero_shot": {k: v / count for k, v in stats["zero_shot"].items()}
+        },
+        "raw_results": all_results
     }
     
     with open(project_root / "benchmarks" / "results.json", "w") as f:
         json.dump(summary, f, indent=4)
-    print(f"Done. Results saved to benchmarks/results.json")
+    print(f"Done. Crossover N: {n_crossover:.2f} queries. Leakage Risk: {summary['benchmark_metadata']['data_leakage_risk']}")
 
 if __name__ == "__main__":
     asyncio.run(run_benchmark())
